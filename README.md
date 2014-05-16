@@ -1,7 +1,7 @@
 cordova-sailfish
 ================
 
-Cordova-sailfish is a SailfishOS adaptation of the [cordova-qt](https://github.com/apache/cordova-qt) port of the Apache Cordova project. 
+Cordova-sailfish is a SailfishOS port of the Apache Cordova project. 
 
 #Requirements
 
@@ -11,18 +11,22 @@ Cordova-sailfish is a SailfishOS adaptation of the [cordova-qt](https://github.c
 
 * Accelerometer
 * Compass
-* File
-* Geolocation (Uses the W3C Geolocation API specifications)
-* Storage (Uses the W3C WebSQL Database and Web Storage API specifications)
+* Device
+* Notification
+* Connection
+* Events
+* in-app browser
 
 # Work in progress
 
-* Connection
 * Contacts
-* Device
-* Events
-* Notification
 * Camera
+* Geolocation
+* Storage
+
+# TODO
+
+Integrate project to cordova-cli and plugins to plugman.
 
 # License
 
