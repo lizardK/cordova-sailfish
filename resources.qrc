@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/">
+        <file>www/index.html</file>
+        <file>www/cordova.js</file>
+        <file>www/cordova_plugins.js</file>
+        <file>www/css/index.css</file>
+        <file>www/img/logo.png</file>
+        <file>www/js/index.js</file>
+        <file>www/plugins/org.apache.cordova.device/www/device.js</file>
+        <file>www/plugins/org.apache.cordova.geolocation/www/Coordinates.js</file>
+        <file>www/plugins/org.apache.cordova.geolocation/www/geolocation.js</file>
+        <file>www/plugins/org.apache.cordova.geolocation/www/Position.js</file>
+        <file>www/plugins/org.apache.cordova.geolocation/www/PositionError.js</file>
+        <file>www/plugins/org.apache.cordova.vibration/www/vibration.js</file>
+        <file>www/plugins/org.apache.cordova.network-information/www/Connection.js</file>
+        <file>www/plugins/org.apache.cordova.network-information/www/network.js</file>
+        <file>www/plugins/org.apache.cordova.device-orientation/www/compass.js</file>
+        <file>www/plugins/org.apache.cordova.device-orientation/www/CompassError.js</file>
+        <file>www/plugins/org.apache.cordova.device-orientation/www/CompassHeading.js</file>
+        <file>www/plugins/org.apache.cordova.battery-status/www/battery.js</file>
+        <file>www/plugins/org.apache.cordova.dialogs/www/notification.js</file>
+        <file>www/plugins/org.apache.cordova.device-motion/www/Acceleration.js</file>
+        <file>www/plugins/org.apache.cordova.device-motion/www/accelerometer.js</file>
+        <file>www/plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js</file>
+    </qresource>
+</RCC>

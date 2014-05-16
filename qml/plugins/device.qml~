@@ -1,0 +1,11 @@
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+import QtSystemInfo 5.0
+
+Item {
+    id: device
+    property alias model: deviceInfo.model()
+    DeviceInfo {
+        id: deviceInfo
+    }
+}
