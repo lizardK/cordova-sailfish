@@ -37,6 +37,8 @@ OTHER_FILES += qml/cordova-sailfish.qml \
     qml/plugins/Notification.qml \
     qml/plugins/Contacts.qml \
     qml/plugins/InAppBrowser.qml \
+    qml/plugins/Geolocation.qml \
+    qml/plugins/Camera.qml \
 
 # to disable building translations every time, comment out the
 # following CONFIG line

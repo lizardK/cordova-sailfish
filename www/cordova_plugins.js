@@ -117,6 +117,27 @@ module.exports = [
         "clobbers": [
             "inappbrowser"
         ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.camera/www/CameraConstants.js",
+        "id": "org.apache.cordova.camera.Camera",
+        "clobbers": [
+            "Camera"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js",
+        "id": "org.apache.cordova.camera.CameraPopoverOptions",
+        "clobbers": [
+            "CameraPopoverOptions"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.camera/www/Camera.js",
+        "id": "org.apache.cordova.camera.camera",
+        "clobbers": [
+            "navigator.camera"
+        ]
     }
 ];
 module.exports.metadata =
@@ -129,7 +150,8 @@ module.exports.metadata =
     "org.apache.cordova.network-information": "0.2.9-dev",
     "org.apache.cordova.battery-status": "0.2.9-dev",
     "org.apache.cordova.dialogs": "0.2.7",
-    "org.apache.cordova.device-motion": "0.2.8-dev"
+    "org.apache.cordova.device-motion": "0.2.8-dev",
+    "org.apache.cordova.camera": "0.2.9"
 }
 // BOTTOM OF METADATA
 });

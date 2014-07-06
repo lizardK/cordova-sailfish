@@ -32,11 +32,6 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtWebKit 3.0
 import QtWebKit.experimental 1.0
-/*import QtSensors 5.0
-import QtPositioning 5.0
-import QtLocation 5.0
-import QtMultimedia 5.0
-import QtFeedback 5.0*/
 import "../plugins"
 import "../plugins_manager.js" as PluginsManager
 
@@ -70,6 +65,7 @@ Page {
 
         Component.onCompleted: {
             // Loading plugins
+            // TODO: externalize to plugins.json
             PluginsManager.PluginsManager.addPlugin("Device");
             PluginsManager.PluginsManager.addPlugin("Vibration");
             PluginsManager.PluginsManager.addPlugin("NetworkStatus");
@@ -78,7 +74,8 @@ Page {
             PluginsManager.PluginsManager.addPlugin("Notification");
             PluginsManager.PluginsManager.addPlugin("Accelerometer");
             PluginsManager.PluginsManager.addPlugin("InAppBrowser");
-            //PluginsManager.PluginsManager.addPlugin("Geolocation");
+            PluginsManager.PluginsManager.addPlugin("Geolocation");
+            PluginsManager.PluginsManager.addPlugin("Camera");
             //PluginsManager.PluginsManager.addPlugin("Contacts");
 
             // Loading index.html

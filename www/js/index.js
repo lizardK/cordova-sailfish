@@ -144,5 +144,40 @@ function deviceReadout() {
     var ref = window.open('http://apache.org', '_blank', 'location=yes');
   },false);
 
+  // Test Geolocation
+  var onGeolocationSuccess = function(position) {
+    var str = ('Latitude: '     + position.coords.latitude          + '<br />' +
+          'Longitude: '         + position.coords.longitude         + '<br />' +
+          'Altitude: '          + position.coords.altitude          + '<br />' +
+          'Accuracy: '          + position.coords.accuracy          + '<br />' +
+          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '<br />' +
+          'Heading: '           + position.coords.heading           + '<br />' +
+          'Speed: '             + position.coords.speed             + '<br />' +
+          'Timestamp: '         + position.timestamp                + '<br />');
+    document.getElementById('geolocation').innerHTML = str;
+  };
 
+  // onError Callback receives a PositionError object
+  //
+  function onGeolocationError(error) {
+    var str = ('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
+    document.getElementById('geolocation').innerHTML = str;
+  }
+
+  navigator.geolocation.getCurrentPosition(onGeolocationSuccess, onGeolocationError);
+
+  // Test Camera
+  function onCameraSuccess(imageURI) {
+    var image = document.getElementById('img-camera');
+    image.src = imageURI;
+  }
+
+  function onCameraFail(message) {
+    document.getElementById('log').innerText = 'Failed because: ' + message;
+  }
+
+  document.getElementById('btn-camera').addEventListener('click',function(){
+    navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50,destinationType: Camera.DestinationType.FILE_URI});
+  }, false);
 }

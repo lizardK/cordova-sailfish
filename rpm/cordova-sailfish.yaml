@@ -33,7 +33,7 @@ PkgBR:
 # Runtime dependencies which are not automatically detected
 Requires:
   - sailfishsilica-qt5 >= 0.10.9 
-
+  - qt5-qtmultimedia-plugin-mediaservice-gstcamerabin
 # All installed files
 Files:
   - '%{_bindir}'

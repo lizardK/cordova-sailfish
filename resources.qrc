@@ -22,5 +22,8 @@
         <file>www/plugins/org.apache.cordova.device-motion/www/Acceleration.js</file>
         <file>www/plugins/org.apache.cordova.device-motion/www/accelerometer.js</file>
         <file>www/plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js</file>
+        <file>www/plugins/org.apache.cordova.camera/www/Camera.js</file>
+        <file>www/plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js</file>
+        <file>www/plugins/org.apache.cordova.camera/www/CameraConstants.js</file>
     </qresource>
 </RCC>
