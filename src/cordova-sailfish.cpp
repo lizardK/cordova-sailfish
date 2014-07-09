@@ -33,6 +33,9 @@
 #endif
 
 #include <sailfishapp.h>
+#include "base64.h"
+#include "file_utils.h"
+#include "image_utils.h"
 
 
 int main(int argc, char *argv[])
@@ -45,7 +48,15 @@ int main(int argc, char *argv[])
   //   - SailfishApp::pathTo(QString) to get a QUrl to a resource file
   //
   // To display the view, call "show()" (will show fullscreen on device).
+   QGuiApplication *app = SailfishApp::application(argc, argv);
 
-  return SailfishApp::main(argc, argv);
+  QQuickView *view = SailfishApp::createView();
+  view->rootContext()->setContextProperty("Base64", new Base64);
+  view->rootContext()->setContextProperty("FileUtils", new FileUtils);
+  view->rootContext()->setContextProperty("ImageUtils", new ImageUtils);
+  view->setSource(SailfishApp::pathTo("qml/cordova-sailfish.qml"));
+  view->show();
+
+  return app->exec();
 }
 

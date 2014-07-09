@@ -10,19 +10,20 @@ Cordova-sailfish is a SailfishOS port of the Apache Cordova project.
 #Supported APIs
 
 * Accelerometer
+* Battery
+* Camera
 * Compass
-* Device
-* Notification
 * Connection
+* Device
 * Events
 * in-app browser
-* Battery
+* Notification
 * Vibration
+
 
 # Work in progress
 
 * Contacts
-* Camera
 * Geolocation
 * Storage
 

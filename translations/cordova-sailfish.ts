@@ -2,9 +2,9 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
-    <name>SecondPage</name>
+    <name>Camera</name>
     <message>
-        <source>Nested Page</source>
+        <source>Take picture</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

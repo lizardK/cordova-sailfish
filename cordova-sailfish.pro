@@ -10,15 +10,19 @@
 #   - translation filenames have to be changed
 
 # The name of your application
+QT += multimedia
+
 TARGET = cordova-sailfish
 
 CONFIG += sailfishapp
 
-SOURCES += src/cordova-sailfish.cpp
+SOURCES += src/cordova-sailfish.cpp \
+    src/base64.cpp \
+    src/file_utils.cpp \
+    src/image_utils.cpp
 
 OTHER_FILES += qml/cordova-sailfish.qml \
     qml/cover/CoverPage.qml \
-    qml/pages/SecondPage.qml \
     qml/plugins/device.qml \
     rpm/cordova-sailfish.changes.in \
     rpm/cordova-sailfish.spec \
@@ -47,4 +51,9 @@ TRANSLATIONS += translations/cordova-sailfish-de.ts
 
 RESOURCES += \
     resources.qrc
+
+HEADERS += \
+    src/base64.h \
+    src/file_utils.h \
+    src/image_utils.h
 

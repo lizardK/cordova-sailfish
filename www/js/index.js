@@ -170,7 +170,7 @@ function deviceReadout() {
   // Test Camera
   function onCameraSuccess(imageURI) {
     var image = document.getElementById('img-camera');
-    image.src = imageURI;
+    image.src = 'file://'+imageURI;
   }
 
   function onCameraFail(message) {
@@ -178,6 +178,13 @@ function deviceReadout() {
   }
 
   document.getElementById('btn-camera').addEventListener('click',function(){
-    navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50,destinationType: Camera.DestinationType.FILE_URI});
+    var opts = {
+      quality: 100,
+      destinationType: Camera.DestinationType.FILE_URI,
+      targetWidth: 200,
+      targetHeight: 200
+    };
+    navigator.camera.getPicture(onCameraSuccess, onCameraFail, opts);
   }, false);
+
 }
