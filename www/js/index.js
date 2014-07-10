@@ -52,13 +52,23 @@ document.addEventListener('deviceready', deviceReadout, false);
 
 function deviceReadout() {
   // Test Device plugin
-  document.getElementById("device").innerHTML = 'Platform :' + device.platform;
+  var deviceInfo = ['<ul>',
+                    '<li>Platform: ',device.platform,'</li>',
+                    '<li>Model: ',device.model,'</li>',
+                    '<li>Version: ',device.version,'</li>',
+                    '<li>Cordova: ',device.cordova,'</li>',
+                    '<li>Uuid: ',device.uuid,'</li>',
+                   '</ul>'].join('');
+
+  document.getElementById("device").innerHTML = deviceInfo;
 
   // Test Connection plugin
   document.getElementById("connection").innerHTML = 'Connection type : ' + navigator.connection.type;
 
   // Test Vibration plugin
-  navigator.notification.vibrate(1000);
+  document.getElementById('btn-vibrate').addEventListener('click',function() {
+    navigator.notification.vibrate(1000);
+  },false);
 
   // Test Compass plugin
   function onCompassSuccess(heading) {
@@ -76,6 +86,7 @@ function deviceReadout() {
 
   function onBatteryStatus(info) {
     document.getElementById("battery").innerHTML = 'Battery :' + info.level + '%';
+    document.getElementById("battery-isplugged").innerHTML = info.isPlugged?'Is plugged':'Not plugged';
   }
 
   // Test notification

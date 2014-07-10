@@ -72,6 +72,10 @@ h2 {
     border-bottom: solid 1px;
 }
 
+ul {
+    list-style-type: none;
+}
+
 .event {
     color:#FFFFFF;
     font-size:12px;
