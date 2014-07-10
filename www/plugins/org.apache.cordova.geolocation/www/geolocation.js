@@ -92,6 +92,7 @@ var geolocation = {
                 // Don't continue with success callback.
                 return;
             }
+          
             var pos = new Position(
                 {
                     latitude:p.latitude,

@@ -16,6 +16,7 @@ Cordova-sailfish is a SailfishOS port of the Apache Cordova project.
 * Connection
 * Device
 * Events
+* Geolocation (Known issue on watchPosition)
 * in-app browser
 * Notification
 * Vibration
@@ -24,7 +25,6 @@ Cordova-sailfish is a SailfishOS port of the Apache Cordova project.
 # Work in progress
 
 * Contacts
-* Geolocation
 * Storage
 
 # TODO

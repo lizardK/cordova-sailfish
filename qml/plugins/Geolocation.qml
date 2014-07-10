@@ -4,17 +4,25 @@ import QtLocation 5.0
 
 Item{
     id: geolocationPlugin
-    property var coords
+    property variant webview
+    property string  callbackID
+    property string  errCallbackID
+
+    function getLocation(options) {
+        geolocationPlugin.webview = options.webview
+        geolocationPlugin.callbackID = options.params.shift()
+        geolocationPlugin.errCallbackID = options.params.shift()
+        if(!positionSource.active)
+            positionSource.start()
+    }
 
     PositionSource {
         id: positionSource
         updateInterval: 1000
-        active: true
 
         onPositionChanged: {
             var coord = positionSource.position.coordinate;
-            console.log("Coordinate:", coord.longitude, coord.latitude);
-            coords = {
+            var position = {
                 latitude: coord.latitude,
                 longitude: coord.longitude,
                 altitude: coord.altitude,
@@ -24,19 +32,8 @@ Item{
                 heading: -1,
                 timestamp: new Date()
             }
+            geolocationPlugin.webview.experimental.evaluateJavaScript("cordova.callback(%1,%2)".arg(geolocationPlugin.callbackID).arg(JSON.stringify(position)));
+            positionSource.stop()
         }
-    }
-
-    function getLocation(options) {
-        if(!positionSource.active)
-            positionSource.start()
-        var webView = options.webview
-        var callbackID = options.params.shift()
-        var errCallbackID = options.params.shift()
-        var result = {
-            coords: geolocationPlugin.coords
-        }
-        console.log(JSON.stringify(result))
-        webView.experimental.evaluateJavaScript("cordova.callback(%1,%2)".arg(callbackID).arg(JSON.stringify(result)));
     }
 }

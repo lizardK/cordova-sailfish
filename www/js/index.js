@@ -167,6 +167,23 @@ function deviceReadout() {
 
   navigator.geolocation.getCurrentPosition(onGeolocationSuccess, onGeolocationError);
 
+  function onGeolocationWatchSuccess(position) {
+    var element = document.getElementById('geolocation-watcher');
+    element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
+      'Longitude: ' + position.coords.longitude     + '<br />' +
+      '<hr />'      + element.innerHTML;
+  }
+
+  // onError Callback receives a PositionError object
+  //
+  function onGeolocationWatchError(error) {
+    alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
+  }
+
+  // Options: throw an error if no update is received every second.
+  //var watchID = navigator.geolocation.watchPosition(onGeolocationWatchSuccess, onGeolocationWatchError, { timeout: 1000 });
+
   // Test Camera
   function onCameraSuccess(imageURI) {
     var image = document.getElementById('img-camera');
