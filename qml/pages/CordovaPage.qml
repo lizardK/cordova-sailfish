@@ -49,6 +49,7 @@ Page {
         experimental.preferences.offlineWebApplicationCacheEnabled: true
         experimental.preferences.universalAccessFromFileURLsAllowed: true
         experimental.preferences.webGLEnabled: true
+        //experimental.transparentBackground: true
 
         // Listen to messages from JS
         experimental.onMessageReceived: {

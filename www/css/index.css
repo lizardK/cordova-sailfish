@@ -24,10 +24,6 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
     background-image:-webkit-gradient(
         linear,
         left top,
@@ -36,27 +32,20 @@ body {
         color-stop(0.51, #E4E4E4)
     );
     background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
+    font-family:Arial, sans-serif;
+    font-size:1.2em;
     height:100%;
     margin:0px;
     padding:0px;
-    text-transform:uppercase;
     width:100%;
 }
 
 /* Portrait layout (default) */
 .app {
     background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    /*top:50%;*/
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
+    width:100%;                   /* text area width */
     text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:15px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
+    padding-top: 180px;
 }
 
 /* Landscape layout (with min-width) */
@@ -70,7 +59,7 @@ body {
 }
 
 h1 {
-    font-size:24px;
+    /*font-size:24px;*/
     font-weight:normal;
     margin:0px;
     overflow:visible;
@@ -78,9 +67,12 @@ h1 {
     text-align:center;
 }
 
+h2 {
+    /*font-size: 1rem;*/
+    border-bottom: solid 1px;
+}
+
 .event {
-    border-radius:4px;
-    -webkit-border-radius:4px;
     color:#FFFFFF;
     font-size:12px;
     margin:0px 30px;
@@ -115,8 +107,20 @@ h1 {
 }
 
 button {
-    width: 200px;
-    height: 30px;
+    width: 90%;
+    height: 60px;
     margin-bottom: 5px;
     margin-top: 5px;
+    border-radius: 0;
+    -webkit-appearance: none;
+    border: 0;
+    background: #333;
+    color: #fff;
+}
+
+button:active {
+    background: #fff;
+    color: #0099FF;
+    font-weight: bold;
+    border: solid 4px;
 }

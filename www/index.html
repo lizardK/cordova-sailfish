@@ -21,32 +21,37 @@
   <head>
     <meta charset="utf-8" />
     <meta name="format-detection" content="telephone=no" />
-    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https:/is/issues.apache.org/jira/browse/CB-4323 -->
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=2, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <title>Cordova-sailfish</title>
   </head>
   <body>
     <div class="app">
       <h1>Apache Cordova</h1>
-      <div id="deviceready" class="blink">
+      <div id="deviceready">
         <p class="event listening">Connecting to Device</p>
         <p class="event received">Device is Ready</p>
-	<p id="device"></p>
-	<p id="connection"></p>
-	<p id="compass"></p>
-	<p id="battery"></p>
-	<p id="accelerometer"></p>
-	<p id="geolocation"></p>
+	<h2>Device</h2>
+	<p id="device">device info</p>
+	<h2>Connexion</h2>
+	<p id="connection">connection nfo</p>
+	<h2>Compass</h2>
+	<p id="compass">compass info</p>
+	<h2>Battery</h2>
+	<p id="battery">battery info</p>
+	<h2>Accelerometer</h2>
+	<p id="accelerometer">accelerometer info</p>
+	<h2>Geolocation</h2>
+	<p id="geolocation">geolocation info</p>
 	<p id="geolocation-watcher"></p>
+	<h2>Camera</h2>
 	<img id="img-camera" />
-	<pre id="log"></pre>
 	<button id="btn-alert">Alert</button>
 	<button id="btn-confirm">Confirm</button>
 	<button id="btn-prompt">Prompt</button>
 	<button id="btn-inappbrowser">In App Browser</button>
 	<button id="btn-camera">Camera</button>
-	
+	<pre id="log">log</pre>	
       </div>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
