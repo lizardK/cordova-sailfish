@@ -1,9 +1,15 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import QtMultimedia 5.0
 
 Item {
     id: notificationPlugin
+    property variant webview
+    property string alertCallbackID
+    property string errAlertCallbackID
+    property string confirmCallbackID
+    property string errConfirmCallbackID
+    property string promptCallbackID
+    property string errPromptCallbackID
 
     Dialog {
         id: dialogAlert
@@ -24,6 +30,8 @@ Item {
                 text: dialogAlert.text
             }
         }
+        onAccepted: notificationPlugin.webview.experimental.evaluateJavaScript("cordova.callback(%1,'%2')".arg(notificationPlugin.alertCallbackID).arg(''));
+        onRejected: notificationPlugin.webview.experimental.evaluateJavaScript("cordova.callback(%1,'%2')".arg(notificationPlugin.alertCallbackID).arg(''));
     }
 
     Dialog {
@@ -48,6 +56,8 @@ Item {
                 text: dialogConfirm.text
             }
         }
+        onAccepted:  notificationPlugin.webview.experimental.evaluateJavaScript("cordova.callback(%1,%2)".arg(notificationPlugin.confirmCallbackID).arg('0'));
+        onRejected:  notificationPlugin.webview.experimental.evaluateJavaScript("cordova.callback(%1,%2)".arg(notificationPlugin.confirmCallbackID).arg('1'));
     }
 
     Dialog {
@@ -62,28 +72,47 @@ Item {
         Column {
             spacing: 10
             anchors.fill: parent
+
             DialogHeader {
                 title: dialogPrompt.title
                 acceptText: dialogPrompt.btnTextAccept
                 cancelText: dialogConfirm.btnTextCancel
             }
+
             Label {
                 id: labelPrompt
                 width: parent.width
                 text: dialogPrompt.text
             }
+
             TextField {
                 id: txtfieldPrompt
                 width: parent.width
                 placeholderText: dialogPrompt.defaultText
             }
         }
+
+        onAccepted:  {
+            var result = {
+                input1: txtfieldPrompt.text,
+                buttonIndex: 0
+            }
+            notificationPlugin.webview.experimental.evaluateJavaScript("cordova.callback(%1,%2)".arg(notificationPlugin.promptCallbackID).arg(JSON.stringify(result)));
+        }
+
+        onRejected:  {
+            var result = {
+                input1: txtfieldPrompt.text,
+                buttonIndex: 1
+            }
+            notificationPlugin.webview.experimental.evaluateJavaScript("cordova.callback(%1,%2)".arg(notificationPlugin.promptCallbackID).arg(JSON.stringify(result)));
+        }
     }
 
     function alert(options) {
-        var webView = options.webview
-        var callbackID = options.params.shift()
-        var errCallbackID = options.params.shift()
+        notificationPlugin.webview= options.webview
+        notificationPlugin.alertCallbackID = options.params.shift()
+        notificationPlugin.errAlertCallbackID = options.params.shift()
         var text = options.params.shift()
         var title = options.params.shift()
         var btn = options.params.shift()
@@ -91,14 +120,12 @@ Item {
         dialogAlert.text = text
         dialogAlert.btnText = btn
         dialogAlert.open()
-
-        //webView.experimental.evaluateJavaScript("cordova.callback(%1,%2)".arg(callbackID).arg(JSON.stringify(result)));
     }
 
     function confirm(options) {
-        var webView = options.webview
-        var callbackID = options.params.shift()
-        var errCallbackID = options.params.shift()
+        notificationPlugin.webview= options.webview
+        notificationPlugin.confirmCallbackID = options.params.shift()
+        notificationPlugin.errConfirmCallbackID = options.params.shift()
         var text = options.params.shift()
         var title = options.params.shift()
         var btns = options.params.shift()
@@ -109,14 +136,12 @@ Item {
         dialogConfirm.btnTextAccept = btns[0].trim()
         dialogConfirm.btnTextCancel = btns[1].trim()
         dialogConfirm.open()
-
-        webView.experimental.evaluateJavaScript("cordova.callback(%1,%2)".arg(callbackID).arg("accept"));
     }
 
     function prompt(options) {
-        var webView = options.webview
-        var callbackID = options.params.shift()
-        var errCallbackID = options.params.shift()
+        notificationPlugin.webview= options.webview
+        notificationPlugin.promptCallbackID = options.params.shift()
+        notificationPlugin.errPromptCallbackID = options.params.shift()
         var text = options.params.shift()
         var title = options.params.shift()
         var btns = options.params.shift()
@@ -129,8 +154,6 @@ Item {
         dialogPrompt.btnTextAccept = btns[0].trim()
         dialogPrompt.btnTextCancel = btns[1].trim()
         dialogPrompt.open()
-
-        webView.experimental.evaluateJavaScript("cordova.callback(%1,%2)".arg(callbackID).arg(text));
     }
 
     function beep(options) {

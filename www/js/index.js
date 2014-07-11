@@ -90,14 +90,14 @@ function deviceReadout() {
   }
 
   // Test notification
-  function alertDismissed() {
-    // do something
+  function onAlertDismissed() {
+    document.getElementById('notification-alert').innerText = 'callback called';
   }
 
   document.getElementById('btn-alert').addEventListener('click',function() {
     navigator.notification.alert(
       'You are the winner!',  // message
-      alertDismissed,         // callback
+      onAlertDismissed,       // callback
       'Game Over',            // title
       'Done'                  // buttonName
     );
@@ -105,22 +105,22 @@ function deviceReadout() {
 
   // process the confirmation dialog result
   function onConfirm(buttonIndex) {
-
+    document.getElementById('notification-confirm').innerText = "You selected button number " +  buttonIndex;
   }
 
   // Show a custom confirmation dialog
   document.getElementById('btn-confirm').addEventListener('click',function() {
     navigator.notification.confirm(
       'You are the winner!', // message
-      onConfirm,            // callback to invoke with index of button pressed
+      onConfirm,             // callback to invoke with index of button pressed
       'Game Over',           // title
-      ['Restart','Exit']         // buttonLabels
+      ['Restart','Exit']     // buttonLabels
     );
   },false);
 
   // process the promp dialog results
   function onPrompt(results) {
-    alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+    document.getElementById('notification-prompt').innerText = "You selected button number " + results.buttonIndex + " and entered " + results.input1;
   }
 
   // Show a custom prompt dialog
