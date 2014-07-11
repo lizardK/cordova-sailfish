@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtMultimedia 5.0
 
 Item {
     id: notificationPlugin
@@ -10,6 +11,8 @@ Item {
     property string errConfirmCallbackID
     property string promptCallbackID
     property string errPromptCallbackID
+    property string beepCallbackID
+    property string errBeepCallbackID
 
     Dialog {
         id: dialogAlert
@@ -156,12 +159,21 @@ Item {
         dialogPrompt.open()
     }
 
+    Audio {
+        id: audioBeep
+        property int count: 1
+        source: Qt.resolvedUrl("/usr/share/sounds/jolla-ambient/stereo/jolla-related-message.wav")
+        onStopped: notificationPlugin.webview.experimental.evaluateJavaScript("cordova.callback(%1,%2)".arg(notificationPlugin.errBeepCallbackID).arg(count));
+        onError: notificationPlugin.webview.experimental.evaluateJavaScript("cordova.callback(%1,%2)".arg(notificationPlugin.beepCallbackID).arg(count));
+    }
+
     function beep(options) {
-        var webView = options.webview
-        var callbackID = options.params.shift()
-        var errCallbackID = options.params.shift()
+        notificationPlugin.webview= options.webview
+        notificationPlugin.beepCallbackID = options.params.shift()
+        notificationPlugin.errBeepCallbackID = options.params.shift()
         var count = options.params.shift()
-        //TODO : generate beep
-        webView.experimental.evaluateJavaScript("cordova.callback(%1,%2)".arg(callbackID).arg(count));
+        if(count)
+            audioBeep.loops = count
+        audioBeep.play()
     }
 }

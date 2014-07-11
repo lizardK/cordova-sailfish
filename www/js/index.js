@@ -134,6 +134,11 @@ function deviceReadout() {
     );
   },false);
 
+  // Test Beep
+  document.getElementById('btn-beep').addEventListener('click',function() {
+    navigator.notification.beep(2);
+  },false);
+
   // Test plugin accelerometer
   function onAccelerometerSuccess(acceleration) {
     document.getElementById('accelerometer').innerHTML = [
