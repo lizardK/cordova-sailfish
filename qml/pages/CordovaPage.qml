@@ -57,7 +57,7 @@ Page {
             console.log("WebView received Message: " + JSON.stringify(msg))
             var p = PluginsManager.PluginsManager.plugin(msg.plugin)
 
-            if(p[msg.func]){
+            if(p[msg.func]) {
                 p[msg.func].call(this,{webview: webView, params: msg.params});
             } else {
                 console.error("No such function ", msg.func, " in plugin ", msg.plugin)
@@ -77,7 +77,7 @@ Page {
             PluginsManager.PluginsManager.addPlugin("InAppBrowser");
             PluginsManager.PluginsManager.addPlugin("Geolocation");
             PluginsManager.PluginsManager.addPlugin("Camera");
-            //PluginsManager.PluginsManager.addPlugin("Contacts");
+            PluginsManager.PluginsManager.addPlugin("Contacts");
 
             // Loading index.html
             webView.url = Qt.resolvedUrl("qrc:/www/index.html")

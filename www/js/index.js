@@ -220,4 +220,22 @@ function deviceReadout() {
     navigator.camera.getPicture(onCameraSuccess, onCameraFail, opts);
   }, false);
 
+  //Test contatcs
+  function onContactSuccess(contacts) {
+    document.getElementById('contacts').innerHTML = 'Found ' + contacts.length + ' contacts.<br />';
+    contacts.forEach(function(c){
+      document.getElementById('contacts').innerHTML += c.displayName + ':' + c.phoneNumbers[0] + '<br />';
+    });
+  };
+
+  function onContactError(contactError) {
+    document.getElementById('contacts').innerText = 'onContactError';
+  };
+
+  // find all contacts with 'Bob' in any name field
+  var options      = new ContactFindOptions();
+  options.filter   = "Mum";
+  options.multiple = true;
+  var fields       = ["displayName", "name"];
+  navigator.contacts.find(fields, onContactSuccess, onContactError, options);
 }

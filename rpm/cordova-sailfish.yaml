@@ -34,6 +34,8 @@ PkgBR:
 Requires:
   - sailfishsilica-qt5 >= 0.10.9 
   - qt5-qtmultimedia-plugin-mediaservice-gstcamerabin
+  - qt5-qtdeclarative-pim-contacts
+
 # All installed files
 Files:
   - '%{_bindir}'

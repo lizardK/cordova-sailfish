@@ -25,5 +25,14 @@
         <file>www/plugins/org.apache.cordova.camera/www/Camera.js</file>
         <file>www/plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js</file>
         <file>www/plugins/org.apache.cordova.camera/www/CameraConstants.js</file>
+        <file>www/plugins/org.apache.cordova.contacts/www/ContactFieldType.js</file>
+        <file>www/plugins/org.apache.cordova.contacts/www/ContactOrganization.js</file>
+        <file>www/plugins/org.apache.cordova.contacts/www/ContactName.js</file>
+        <file>www/plugins/org.apache.cordova.contacts/www/ContactFindOptions.js</file>
+        <file>www/plugins/org.apache.cordova.contacts/www/ContactField.js</file>
+        <file>www/plugins/org.apache.cordova.contacts/www/ContactError.js</file>
+        <file>www/plugins/org.apache.cordova.contacts/www/ContactAddress.js</file>
+        <file>www/plugins/org.apache.cordova.contacts/www/Contact.js</file>
+        <file>www/plugins/org.apache.cordova.contacts/www/contacts.js</file>
     </qresource>
 </RCC>
